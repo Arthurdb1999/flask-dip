@@ -1,10 +1,8 @@
 from dataclasses import dataclass
-from app.database import db_session
 
+# O decorator adiciona um construtor para a classe automaticamente, bem como outros métodos (__repr__, etc)
 @dataclass
 class User(object):
-    query = db_session.query_property()
-
     id: int
     name: str
     ativo: bool = True

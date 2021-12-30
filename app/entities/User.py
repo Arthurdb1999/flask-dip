@@ -1,8 +1,11 @@
 from sqlalchemy import Table, Column, Integer, String, Boolean
 from app.database import registry
-from flask_marshmallow import Marshmallow
+from sqlalchemy.orm import declarative_base
+from app.domains.User import User
+from dataclasses import dataclass
 
-ma = Marshmallow()
+Base = declarative_base()
+
 user_table = Table(
     'user',
     registry.metadata,
@@ -11,11 +14,6 @@ user_table = Table(
     Column("ativo", Boolean)
 )
 
-# Classe utilizada para serializar um ResultSet, que vem de uma query, para JSON.
-class UserSchema(ma.Schema):
-    class Meta:
-        fields = ('id', 'name', 'ativo')
-
-
-users_schema = UserSchema(many=True)
-user_schema = UserSchema()
+@dataclass
+class UserEntity(User, Base):
+    __table__ = user_table

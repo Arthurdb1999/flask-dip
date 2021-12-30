@@ -7,8 +7,11 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
 
-    init_db()
-    run_mappers()
+    @app.cli.command('db_create')
+    def db_create():
+        init_db()
+        run_mappers()
+        print('Database created')
 
 
     @app.teardown_appcontext
@@ -16,7 +19,7 @@ def create_app():
         db_session.remove()
 
 
-    from app.routes import User
+    from app.endpoints import User
     app.register_blueprint(User.bp)
 
 
