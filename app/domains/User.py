@@ -5,4 +5,4 @@ from dataclasses import dataclass
 class User(object):
     id: int
     name: str
-    ativo: bool = True
+    active: bool = True

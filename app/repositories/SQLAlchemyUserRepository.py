@@ -6,10 +6,9 @@ class SQLAlchemyUserRepository(UserRepository):
         self.session = session
 
     def add(self, user):
-        print(user)
-        user_entity = UserEntity(user)
-        print(user_entity)
+        user_entity = UserEntity(id=user.id, name=user.name)
         self.session.add(user_entity)
+        return user_entity
 
     def get(self, **kwargs):
         return self.session.query(UserEntity).filter_by(**kwargs).all()

@@ -5,7 +5,7 @@ from typing import List
 
 class UserRepository(ABC):
     @abstractmethod  
-    def add(self, user: User):
+    def add(self, user: User) -> User:
         raise NotImplementedError
     
     @abstractmethod

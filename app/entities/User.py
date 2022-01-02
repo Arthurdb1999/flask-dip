@@ -11,9 +11,8 @@ user_table = Table(
     registry.metadata,
     Column('id', Integer, primary_key=True),
     Column('name', String),
-    Column("ativo", Boolean)
+    Column("active", Boolean)
 )
 
-@dataclass
 class UserEntity(User, Base):
     __table__ = user_table

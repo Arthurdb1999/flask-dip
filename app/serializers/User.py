@@ -6,7 +6,7 @@ ma = Marshmallow()
 # Classe utilizada para serializar um ResultSet, que vem de uma query, para JSON.
 class UserSchema(ma.Schema):
     class Meta:
-        fields = ('id', 'name', 'ativo')
+        fields = ('id', 'name', 'active')
 
 
 users_schema = UserSchema(many=True)
