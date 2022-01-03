@@ -1,7 +1,7 @@
-from app.repositories.UserRepository import UserRepository
+from app.repositories.AbstractUserRepository import AbstractUserRepository
 from app.entities.User import UserEntity
     
-class SQLAlchemyUserRepository(UserRepository):
+class SQLAlchemyUserRepository(AbstractUserRepository):
     def __init__(self, session):
         self.session = session
 

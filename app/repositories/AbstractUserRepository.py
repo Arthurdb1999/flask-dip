@@ -3,7 +3,7 @@ from app.domains.User import User
 from typing import List
 
 
-class UserRepository(ABC):
+class AbstractUserRepository(ABC):
     @abstractmethod  
     def add(self, user: User) -> User:
         raise NotImplementedError

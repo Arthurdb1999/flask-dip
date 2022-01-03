@@ -1,11 +1,14 @@
 from flask import Flask
 from config import Config
 from app.database import db_session, init_db
-from app.models import run_mappers
+from app.mapper import run_mappers
+from app.ioc import register_ioc
 
 def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
+
+    register_ioc()
 
     @app.cli.command('db_create')
     def db_create():
