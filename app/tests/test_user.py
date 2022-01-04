@@ -1,9 +1,11 @@
-# TODO
-# from app.services.UserService import UserService
-# from app.tests.ioc import register_ioc
+from app.services.UserService import UserService
+from app.tests.ioc import register_ioc
 
+# FIX
+def test_get_user_by_kwargs():
+    register_ioc()
+    service = UserService()
+    users = service.get(id=1, name="Arthur")
 
-# def test_add_repeated_user():
-#     register_ioc()
-#     service = UserService()
-#     assert service.add()[0].name == "Name 1"
+    assert len(users) == 1
+    assert users[0].name == "Arthur"
