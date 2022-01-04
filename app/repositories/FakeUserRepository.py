@@ -6,8 +6,8 @@ class FakeUserRepository(AbstractUserRepository):
     def __init__(self, users: List[User]):
         self._users = list(users)
 
-    def add(self, user):
-        self._users.add(user)
+    def add(self, user: User):
+        self._users.append(user)
         return user
 
     def get(self, **kwargs):
