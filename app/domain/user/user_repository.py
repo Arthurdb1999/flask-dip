@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
-from app.domains.User import User
+from app.domain.user.user import User
 from typing import List
 
 
-class AbstractUserRepository(ABC):
+class UserRepository(ABC):
     @abstractmethod  
     def add(self, user: User) -> User:
         raise NotImplementedError

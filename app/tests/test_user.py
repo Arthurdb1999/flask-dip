@@ -1,8 +1,8 @@
-from app.services.UserService import UserService
-from app.repositories.FakeUserRepository import FakeUserRepository
-from app.domains.User import User
-from app import create_app
 import pytest
+
+from app.domain.user.user_service import UserService
+from app.domain.user.user import User
+from app import create_app
 
 
 @pytest.fixture(scope="session")

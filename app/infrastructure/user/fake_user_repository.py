@@ -1,8 +1,9 @@
-from app.repositories.AbstractUserRepository import AbstractUserRepository
-from app.domains.User import User
 from typing import List
 
-class FakeUserRepository(AbstractUserRepository):
+from app.domain.user.user_repository import UserRepository
+from app.domain.user.user import User
+
+class FakeUserRepository(UserRepository):
     def __init__(self, users: List[User]):
         self._users = list(users)
 

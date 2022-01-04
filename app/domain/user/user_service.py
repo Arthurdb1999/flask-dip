@@ -1,11 +1,11 @@
-from app.repositories.AbstractUserRepository import AbstractUserRepository
-from app.domains.User import User
+from app.domain.user.user_repository import UserRepository
+from app.domain.user.user import User
 import inject
 
 class UserService:
 
     @inject.autoparams()
-    def __init__(self, user_repository: AbstractUserRepository):
+    def __init__(self, user_repository: UserRepository):
         self.user_repository = user_repository
 
     def add(self, user: User):

@@ -1,9 +1,10 @@
 from flask import jsonify, request, Blueprint
-from app.domains.User import User
-from app.serializers.User import user_schema
-from app.database import db_session
-from app.repositories.SQLAlchemyUserRepository import SQLAlchemyUserRepository
-from app.services.UserService import UserService
+
+from app.domain.user.user import User
+from app.domain.user.user_service import UserService
+from app.infrastructure.user.sqlalchemy_user_serializer import user_schema
+from app.infrastructure.database import db_session
+from app.infrastructure.user.sqlalchemy_user_repository import SQLAlchemyUserRepository
 
 bp = Blueprint("user_routes", __name__)
 

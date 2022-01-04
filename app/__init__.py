@@ -10,9 +10,9 @@ def create_app(test_config=None):
         register_ioc()
         app.config.update(test_config)
     else:
-        from app.ioc import register_ioc
-        from app.database import db_session, init_db
-        from app.mapper import run_mappers
+        from app.infrastructure.ioc import register_ioc
+        from app.infrastructure.database import db_session, init_db
+        from app.infrastructure.mapper import run_mappers
 
         register_ioc()
 
@@ -28,7 +28,7 @@ def create_app(test_config=None):
             db_session.remove()
 
 
-        from app.endpoints import User
-        app.register_blueprint(User.bp)
+        from app.api import user_endpoints
+        app.register_blueprint(user_endpoints.bp)
 
     return app
