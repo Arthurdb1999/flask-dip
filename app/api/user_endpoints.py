@@ -10,16 +10,32 @@ bp = Blueprint("user_routes", __name__)
 
 @bp.route('/createUser', methods=["POST"])
 def create_user():
-    service = UserService()
-    user = User(id=request.json['id'], name=request.json['name'])
+    user = UserDto.load_from(request)
+    controller = UserController()
+    return controller.create_user(user)
+  
 
-    user_exists = service.get(name=user.name)
-    if len(user_exists) > 0:
-        return jsonify(error="Usuário já cadastrado!"), 400
+@dataclass
+class UserDto(object):
+    id: int
+    name: str
+    active: bool
 
-    insertedUser = service.add(user)
-    db_session.commit()
+    @classmethod
+    def load_from (request):
+        return User(id=request.json['id'], name=request.json['name'])
 
-    serialized_user = user_schema.dump(insertedUser)
 
-    return jsonify(insertedUser=serialized_user)
+class UserController():
+    def __init__(self, service: UserService):
+        self.__service = service
+
+    def create_user(self, userDto:UserDto):
+        inserted_user = self.__service.register(user)
+        if not inserted_user:
+            return jsonify(error="Usuário já cadastrado!"), 400
+
+        serialized_user = user_schema.dump(inserted_user)
+
+        return jsonify(insertedUser=serialized_user)
+    
