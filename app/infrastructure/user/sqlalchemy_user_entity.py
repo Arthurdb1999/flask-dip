@@ -1,8 +1,9 @@
 from sqlalchemy import Table, Column, Integer, String, Boolean
-from app.database import registry
 from sqlalchemy.orm import declarative_base
-from app.domains.User import User
 from dataclasses import dataclass
+
+from app.infrastructure.database import registry
+from app.domain.user.user import User
 
 Base = declarative_base()
 
@@ -14,5 +15,5 @@ user_table = Table(
     Column("active", Boolean)
 )
 
-class UserEntity(User, Base):
+class SQLAlchemyUserEntity(User, Base):
     __table__ = user_table
