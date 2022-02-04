@@ -17,9 +17,9 @@ def create_user():
     if len(user_exists) > 0:
         return jsonify(error="Usuário já cadastrado!"), 400
 
-    insertedUser = service.add(user)
+    inserted_user = service.add(user)
     db_session.commit()
 
-    serialized_user = user_schema.dump(insertedUser)
+    serialized_user = user_schema.dump(inserted_user)
 
     return jsonify(insertedUser=serialized_user)
