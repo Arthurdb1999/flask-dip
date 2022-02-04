@@ -56,5 +56,3 @@ Fiz esta POC com base principalmente em dois link:
   - [Repositório utilizado na escrita do artigo acima](https://github.com/cassioeskelsen/precisamos-falar-de-di-ioc-python)
 
 2. [Cosmic Python](https://www.cosmicpython.com/book/chapter_02_repository.html) (Principalmente capítulos 1, 2 e 4)
-
-Todo o trabalho que está na branch master foi feito utilizando uma estrutura de pastas que fui achando mais sensato. Já a branch [folder_structure](https://github.com/Arthurdb1999/flask-dip/tree/folder_structure) segue a estrutura de pastas do primeiro artigo linkado acima.
